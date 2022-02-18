@@ -10,6 +10,10 @@
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <!--Math-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script>
   <!-- Google fonts-->
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
     type="text/css" />
@@ -46,12 +50,10 @@
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
           <div class="post-heading">
-            <h1>Calcolo millisecondi per Delay</h1>
-            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+            <h1>Speaker Delay Time</h1>
+            <h2 class="subheading">Calculator and theory.</h2>
             <span class="meta">
-              Posted by
-              <a href="#!">Start Bootstrap</a>
-              on August 24, 2021
+              18/02/2022
             </span>
           </div>
         </div>
@@ -72,12 +74,12 @@
             <!--Calcolatrice delay-->
             <form class="row g-3">
               <div class="col-md-6">
-                <label for="formGroupExampleInput" class="form-label">Distance [m]</label>
+                <label for="formGroupExampleInput" class="form-label">\(Distance \: [m]\)</label>
                 <input type="text" inputmode="numeric" class="form-control" name="dist" placeholder="Distance">
               </div>
 
               <div class="col-md-6">
-                <label for="formGroupExampleInput" class="form-label">Sound Speed [m/s]</label>
+                <label for="formGroupExampleInput" class="form-label">\( Sound Speed \: [m/s]\)</label>
                 <input type="text" inputmode="numeric" class="form-control" name="speed" placeholder="Sound Speed"
                   value="344.2">
               </div>
@@ -91,11 +93,31 @@
           </div>
           <!--Fine calcolatrice-->
 
-          <h2 class="section-heading">Formula</h2>
+          <h2 class="section-heading">Theory</h2>
+
+          <p>
+            $${Distance \: [m] \over SoundSpeed \: [m/s]}\cdot 1000 = DelayTime \: [ms]$$
+          
+            <ul class="list-unstyled">
+              <li>Where: </li>
+                <ul>
+                  <li>\( DelayTime \: [m] \) is the delay time in milliseconds to set to the mixing console (Figure 2);</li>
+                  <li>\( Distance \: [m] \) is the distance between the instrument speaker on the stage and the PA one (Figure 1);</li>
+                  <li>\( SoundSpeed \: [m] \) is the propagation speed of the sound, and it depends on the temperature and humidity of the air;</li>
+                  <li>The final multiplication for \( 1000 \) converts the seconds to milliseconds.</li>
+                </ul>
+              </li>
+            </ul>
+          </p>
+
 
           <img class="img-fluid rounded mx-auto d-block" src="assets/img/DelayDistance.svg" alt="..." />
+          <span class="caption text-muted">Figure 1 - Distance between speakers</span>
+          <br>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/SoundcraftDelay.jpg" alt="..." />
+          <span class="caption text-muted">Figure 2 - Delay encoder on Soundcraft SiExpression</span>
 
-          <h2 class="section-heading">Speed of Sound table</h2>
+          <h3 class="section-heading">Speed of Sound table</h3>
 
           <!--Tabella-->
           <div class="table-responsive">
