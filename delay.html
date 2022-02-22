@@ -7,7 +7,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <title>Paolo Rosettani</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/paoloros.svg" />
   <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
   <!--Math-->
@@ -92,6 +92,22 @@
             </form>
           </div>
           <!--Fine calcolatrice-->
+          <h3>Where should I insert that Delay?</h2>
+          <p>You should reproduce with this calculated Delay the instrument that is back.</p>
+          <p>For example, on the stage you have a Bass speaker playing, but the same signal is sent to the
+          PA speakers that are placed to the front of the stage (Figure 1).
+          Without delay, the audience will receive the sum of this two sound that are not in phase, so it can be attenuated.
+          To allign this two signal in the air, you need to reproduce the Bass delayed.
+          The same apply for an Electric guitar Ampli.
+          </p>
+
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/DelayDistance.svg" alt="..." />
+          <span class="caption text-muted">Figure 1 - Distance between speakers</span>
+
+          <p>If you have a Soundcraft SiExpression mixing console, in Figure 2 you can find where to add the Delay time.</p>
+
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/delayapply.jpg" alt="..." />
+          <span class="caption text-muted">Figure 2 - Delay encoder on Soundcraft SiExpression</span>
 
           <h2 class="section-heading">Theory</h2>
 
@@ -101,8 +117,8 @@
             <ul class="list-unstyled">
               <li>Where: </li>
                 <ul>
-                  <li>\( DelayTime \: [m] \) is the delay time in milliseconds to set to the mixing console (Figure 2);</li>
-                  <li>\( Distance \: [m] \) is the distance between the instrument speaker on the stage and the PA one (Figure 1);</li>
+                  <li>\( DelayTime \: [m] \) is the delay time in milliseconds to set to the mixing console (Figure 3);</li>
+                  <li>\( Distance \: [m] \) is the distance between the instrument speaker on the stage and the PA one (Figure 2);</li>
                   <li>\( SoundSpeed \: [m] \) is the propagation speed of the sound, and it depends on the temperature and humidity of the air;</li>
                   <li>The final multiplication for \( 1000 \) converts the seconds to milliseconds.</li>
                 </ul>
@@ -110,12 +126,6 @@
             </ul>
           </p>
 
-
-          <img class="img-fluid rounded mx-auto d-block" src="assets/img/DelayDistance.svg" alt="..." />
-          <span class="caption text-muted">Figure 1 - Distance between speakers</span>
-          <br>
-          <img class="img-fluid rounded mx-auto d-block" src="assets/img/SoundcraftDelay.jpg" alt="..." />
-          <span class="caption text-muted">Figure 2 - Delay encoder on Soundcraft SiExpression</span>
 
           <h3 class="section-heading">Speed of Sound table</h3>
 
