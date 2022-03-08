@@ -67,35 +67,58 @@
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
 
-          <h2 class="section-heading">Theory</h2>
+          <h2 class="section-heading">Issue</h2>
 
-          <p>
-          <div class="table-responsive"> $${Distance \: [m] \over SoundSpeed \: [m/s]}\cdot 1000 = DelayTime \: [ms]$$
+          <p>The front USB socket is broken (Figure 1).</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/soundcraftbrokenusb.jpg" alt="..." />
+          <span class="caption text-muted">Figure 1 - Broken USB</span>
+
+          <h2 class="section-heading">Procedure</h2>
+          <div class="alert alert-danger" role="alert">
+            This is a DIY repair, if you feel expert enough on this, rememeber that you are doing it under YOUR OWN RISK!
           </div>
-
-          <ul class="list-unstyled">
-            <li>Where: </li>
-            <ul>
-              <li>\( DelayTime \: [m] \) is the delay time in milliseconds to set to the mixing console (Figure 2);</li>
-              <li>\( Distance \: [m] \) is the distance between the instrument speaker on the stage and the PA one
-                (Figure 1);</li>
-              <li>\( SoundSpeed \: [m] \) is the propagation speed of the sound, and it depends on the temperature and
-                humidity of the air;</li>
-              <li>The final multiplication for \( 1000 \) converts the seconds to milliseconds.</li>
-            </ul>
-            </li>
-          </ul>
-          </p>
-
-
-          <img class="img-fluid rounded mx-auto d-block" src="assets/img/DelayDistance.svg" alt="..." />
-          <span class="caption text-muted">Figure 1 - Distance between speakers</span>
           <br>
-          <img class="img-fluid rounded mx-auto d-block" src="assets/img/SoundcraftDelay.jpg" alt="..." />
-          <span class="caption text-muted">Figure 2 - Delay encoder on Soundcraft SiExpression</span>
+          <h3>Step 1 - Remove the back plate</h3>
+          <p>Unscrew all the highlighted screws (Figure 2).</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/Screws.jpg" alt="..." />
+          <span class="caption text-muted">Figure 2 - Screws to remove</span>
 
+          <p>Remove carefully the back plate (Figure 3).</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/plateoff.jpg" alt="..." />
+          <span class="caption text-muted">Figure 3 - Remove back plate</span>
+          
+          <br>
+          <h3>Step 2 - Remove the USB PCB</h3>
+          <p>The USB port is solded on a tiny PCB module. Unplug the flat connector from it, but before rememeber to sign it with a marker! (Figure 4)</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/usbmodule.jpg" alt="..." />
+          <span class="caption text-muted">Figure 4 - USB PCB module.</span>
 
+          <p>Remove the two screws that hold the tiny PCB (Figure 5).</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/usbmodule2.jpg" alt="..." />
+          <span class="caption text-muted">Figure 5 - Tiny USB PCB bottom view.</span>
 
+          <br>
+          <h3>Step 3 - Soldering</h3>
+          <p>Now we need to solder the new USB socket. (Figure 6)</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/swap.jpg" alt="..." />
+          <span class="caption text-muted">Figure 6 - Unmounted PCB module.</span>
+
+          <p>Remove the old connector and solder the new one (Figure 7). Rememeber to use flux.</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/usbsoldering2.jpg" alt="..." />
+          <span class="caption text-muted">Figure 7 - New component solded.</span>
+
+          <p>Clean the PCB from the flux used with isopropyl alcohol (Figure 8).</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/usbpolish.jpg" alt="..." />
+          <span class="caption text-muted">Figure 8 - Cleaned PCB.</span>
+
+          <br>
+          <h3>Step 4 - Mount it back</h3>
+          <p>Mount back the solded module. (Figure 9)</p>
+          <img class="img-fluid rounded mx-auto d-block" src="assets/img/USB/newusb.jpg" alt="..." />
+          <span class="caption text-muted">Figure 9 - Solded module back in place.</span>
+          <p>Follow the previous steps to reassemble the mixer.</p>
+
+          <h4>You are good to go!</h4>
 
 
 
