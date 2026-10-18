@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Paolo Rosettani</title>
+  <link rel="icon" type="image/x-icon" href="assets/paoloros.svg" />
+  <!-- Font Awesome icons (free version)-->
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <style>
+    .scheda-group-title { font-size: 1rem; font-weight: 700; margin: 0 0 1rem; color: #5c636a; }
+    .scheda-field { margin-bottom: 1.5rem; }
+    .scheda-field .field-label { font-weight: 700; margin-bottom: .5rem; display: block; }
+    .scheda-field .field-hint { font-weight: 400; font-style: italic; color: #6c757d; font-size: .85rem; }
+    .scheda-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .scheda-chips .btn { font-size: .9rem; }
+    /* stile proprio dei pulsanti: nessun effetto hover "appiccicoso" su smartphone */
+    .scheda-chips .chip { color: #6c757d; background: transparent; border: 1px solid #6c757d; }
+    .scheda-chips .chip-alt { color: #3d6f8e; border-color: #3d6f8e; }
+    .scheda-chips .btn-check:not(:checked) + .chip:hover { background: transparent; color: #6c757d; border-color: #6c757d; }
+    .scheda-chips .btn-check:not(:checked) + .chip-alt:hover { color: #3d6f8e; border-color: #3d6f8e; }
+    .scheda-chips .btn-check:checked + .chip,
+    .scheda-chips .btn-check:checked + .chip:hover { background: #6c757d; color: #fff; border-color: #6c757d; }
+    .scheda-chips .btn-check:checked + .chip-alt,
+    .scheda-chips .btn-check:checked + .chip-alt:hover { background: #3d6f8e; color: #fff; border-color: #3d6f8e; }
+    @media (hover: hover) {
+      .scheda-chips .btn-check:not(:checked) + .chip:hover { background: rgba(108, 117, 125, .12); }
+      .scheda-chips .btn-check:not(:checked) + .chip-alt:hover { background: rgba(61, 111, 142, .12); }
+    }
+    /* niente alone dopo il click del mouse; resta solo per la navigazione da tastiera */
+    .scheda-chips .btn-check:focus:not(:focus-visible) + .btn { box-shadow: none !important; }
+    .scheda-section { margin-top: 2.5rem; }
+    .scheda-section .section-heading { background: #e4e6e8; padding: .6rem 1rem; border-radius: .4rem; margin: 0 0 1.5rem; }
+    /* evidenziazioni tenui */
+    .tint { padding: 1rem 1.1rem; border-radius: .5rem; border-left: 5px solid transparent; }
+    .tint-viola { background: #ebe4f3; border-left-color: #c6b5dc; }
+    .tint-oliva { background: #ebecd8; border-left-color: #c3c69f; }
+    .tint-magenta { background: #f3dcea; border-left-color: #dcadcb; }
+    .tint-rosa { background: #fbe6ea; border-left-color: #ecb7c3; }
+    .scheda-group { margin-bottom: 1.5rem; }
+    .scheda-group .scheda-field.indent { margin-left: 1.5rem; }
+    .scheda-group .scheda-field:last-child { margin-bottom: 0; }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand fw-light" href="index.html">Paolo Rosettani</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About me</a></li>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">things</a></li>
+          <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header-->
+  <header class="masthead" style="background-image: url('assets/img/delay-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="post-heading">
+            <h1>Scheda di valutazione</h1>
+            <h2 class="subheading">Scheda analitico descrittiva del vino AIS</h2>
+            <span class="meta" id="dataOggi"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Post Content-->
+  <article class="mb-4">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+          <blockquote class="blockquote">Clicca sulle voci per selezionarle. Clicca di nuovo su una voce selezionata per deselezionarla. Le voci non selezionate non compariranno nel file.</blockquote>
+
+          <form id="scheda" onsubmit="return false;" autocomplete="off">
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="nomeVino" class="form-label fw-bold">Nome del vino</label>
+                <input type="text" class="form-control" id="nomeVino" placeholder="Nome del vino">
+              </div>
+              <div class="col-md-6">
+                <label for="luogo" class="form-label fw-bold">Luogo</label>
+                <input type="text" class="form-control" id="luogo" placeholder="Luogo">
+              </div>
+              <div class="col-md-6">
+                <label for="annata" class="form-label fw-bold">Annata</label>
+                <input type="text" inputmode="numeric" class="form-control" id="annata" placeholder="Annata">
+              </div>
+              <div class="col-md-6">
+                <label for="gradazione" class="form-label fw-bold">Gradazione alcolica</label>
+                <div class="input-group">
+                  <input type="text" inputmode="decimal" class="form-control" id="gradazione" placeholder="Gradazione alcolica">
+                  <span class="input-group-text">% vol</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="sezioni"></div>
+
+            <div class="d-flex flex-wrap gap-2 mt-5 mb-4">
+              <button type="button" class="btn btn-primary" id="btnDownload">
+                <i class="fas fa-download"></i> Scarica scheda (.txt)
+              </button>
+              <button type="button" class="btn btn-outline-secondary" id="btnReset">Azzera scheda</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </article>
+  <!-- Footer-->
+  <footer class="border-top">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <ul class="list-inline text-center">
+
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/paolo.rosettani/" target="_blank">
+                  <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          </li>
+          <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/paolorosettani/" target="_blank">
+                  <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          </li>
+          <li class="list-inline-item">
+              <a href="https://www.youtube.com/channel/UC4JTTtRGFIOQDjxjChF1j0g" target="_blank">
+                  <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          </li>
+
+          </ul>
+          <div class="small text-center text-muted fst-italic">Copyright &copy; 2022</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+
+  <!-- Scheda AIS -->
+  <script>
+    // ---------- Dati della scheda ----------
+    const COLORI = {
+      "Bianco": ["Verdolino", "Paglierino", "Dorato", "Ambrato", "Mogano"],
+      "Rosé": ["Fiore di pesco", "Ramato", "Salmone", "Corallo", "Peonia"],
+      "Rosso": ["Amaranto", "Rubino", "Carminio", "Granato", "Aranciato"]
+    };
+
+    const EFF_VISIVA = "Effervescenza (solo per spumanti e frizzanti)";
+    const GRUPPO_BG = { [EFF_VISIVA]: "oliva" };
+
+    const SEZIONI = [
+      {
+        titolo: "Esame visivo",
+        campi: [
+          { k: "Limpidezza", o: ["Velato", "Abbastanza limpido", "Cristallino", "Brillante"] },
+          { k: "Colore", t: "colore" },
+          { k: "Consistenza", hint: "solo per vini fermi", bg: "viola", o: ["Scorrevole", "Consistente", "Viscoso"] },
+          { g: EFF_VISIVA, k: "Numero catenelle", o: ["Scarse", "Mediamente numerose", "Numerose"] },
+          { g: EFF_VISIVA, k: "Velocità ascesa", o: ["Rapida", "Media", "Lenta"] },
+          { g: EFF_VISIVA, k: "Grana bollicine", o: ["Grossolane", "Mediamente fini", "Fini"] },
+          { g: EFF_VISIVA, k: "Persistenza bollicine", o: ["Evanescenti", "Mediamente persistenti", "Persistenti"] }
+        ]
+      },
+      {
+        titolo: "Esame olfattivo",
+        campi: [
+          { k: "Intensità", o: ["Moderatamente intenso", "Intenso", "Molto intenso"] },
+          { k: "Descrittori", hint: "è possibile selezionare più opzioni", t: "multi",
+            o: ["Aromatico", "Floreale", "Speziato", "Varietale", "Vegetale", "Pasticceria-Panificazione", "Fruttato", "Fragrante", "Empireumatico"] },
+          { k: "Note", t: "note" },
+          { k: "Complessità", o: ["Moderatamente complesso", "Complesso", "Ampio"] },
+          { k: "Qualità olfattiva", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
+        ]
+      },
+      {
+        titolo: "Esame gusto-olfattivo",
+        campi: [
+          { k: "Dolcezza", o: ["Secco", "Poco dolce", "Moderatamente dolce", "Dolce", "Molto dolce"] },
+          { k: "Acidità", o: ["Poco fresco", "Moderatamente fresco", "Fresco", "Vibrante", "Acidulo"] },
+          { k: "Alcolicità", o: ["Poco caldo", "Moderatamente caldo", "Caldo", "Molto caldo", "Alcolico"] },
+          { k: "Tannicità", o: ["No", "Poco tannico", "Moderatamente tannico", "Tannico", "Tenace", "Astringente"] },
+          { k: "Rotondità", o: ["Poco morbido", "Moderatamente morbido", "Morbido", "Vellutato", "Pastoso"] },
+          { k: "Sapidità", o: ["Poco sapido", "Moderatamente sapido", "Sapido", "Saporito", "Salato"] },
+          { k: "Effervescenza", hint: "solo spumanti e frizzanti", bg: "oliva", o: ["Delicata", "Moderata", "Vivace", "Esuberante", "Incisiva"] },
+          { k: "Intensità", o: ["Moderatamente intenso", "Intenso", "Molto intenso"] },
+          { k: "Struttura", o: ["Di medio corpo", "Di corpo pieno", "Robusto"] },
+          { k: "Equilibrio", o: ["Poco equilibrato", "Mediamente equilibrato", "Equilibrato"] },
+          { k: "Persistenza", o: ["Moderatamente persistente", "Persistente", "Molto persistente"] },
+          { k: "Qualità gusto-olfattiva", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
+        ]
+      },
+      {
+        titolo: "Considerazioni finali",
+        campi: [
+          { k: "Stato evolutivo", o: ["Pronto", "Maturo"] },
+          { k: "Armonia", bg: "rosa", o: ["Poco armonico", "Mediamente armonico", "Armonico"] },
+          { k: "Qualità complessiva", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
+        ]
+      }
+    ];
+
+    // ---------- Utilità ----------
+    const esc = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+    const pad = n => String(n).padStart(2, "0");
+
+    function chip(type, name, id, value, cls) {
+      return `<input type="${type}" class="btn-check" name="${name}" id="${id}" value="${esc(value)}" autocomplete="off">` +
+             `<label class="btn ${cls || "chip"}" for="${id}">${esc(value)}</label>`;
+    }
+
+    function labelHtml(c) {
+      return `<span class="field-label">${esc(c.k)}` +
+             (c.hint ? ` <span class="field-hint">(${esc(c.hint)})</span>` : "") + `</span>`;
+    }
+
+    // ---------- Costruzione del modulo ----------
+    function build() {
+      const root = document.getElementById("sezioni");
+      let html = "";
+      SEZIONI.forEach((sez, i) => {
+        html += `<div class="scheda-section"><h2 class="section-heading">${esc(sez.titolo)}</h2>`;
+        let gruppoCorrente = null;
+        sez.campi.forEach((c, j) => {
+          const name = `f${i}_${j}`;
+          if (c.g !== gruppoCorrente) {
+            if (gruppoCorrente) html += `</div>`;
+            gruppoCorrente = c.g;
+            if (c.g) html += `<div class="scheda-group tint tint-${GRUPPO_BG[c.g]}"><h3 class="scheda-group-title">${esc(c.g)}</h3>`;
+          }
+          const cls = ["scheda-field"];
+          if (c.g) cls.push("indent");
+          if (c.bg) cls.push("tint", "tint-" + c.bg);
+          html += `<div class="${cls.join(" ")}">` + (c.t === "note" ? "" : labelHtml(c));
+          if (c.t === "colore") {
+            html += `<div class="scheda-chips" id="catColore">` +
+              Object.keys(COLORI).map((cat, n) => chip("radio", "colcat", `colcat${n}`, cat)).join("") +
+              `</div><div class="scheda-chips mt-2" id="tinteColore"></div>`;
+          } else if (c.t === "note") {
+            html += `<label for="note" class="field-label">Note <span class="field-hint">(descrizione testuale libera)</span></label>` +
+                    `<textarea class="form-control" id="note" rows="7" placeholder="Scrivi qui le tue note: sensazioni, abbinamenti, impressioni generali…"></textarea>`;
+          } else {
+            const type = c.t === "multi" ? "checkbox" : "radio";
+            html += `<div class="scheda-chips">` +
+              c.o.map((v, n) => chip(type, name, `${name}_${n}`, v)).join("") + `</div>`;
+          }
+          html += `</div>`;
+        });
+        if (gruppoCorrente) html += `</div>`;
+        html += `</div>`;
+      });
+      root.innerHTML = html;
+    }
+
+    function mostraTinte() {
+      const cat = document.querySelector('input[name="colcat"]:checked');
+      const box = document.getElementById("tinteColore");
+      if (!cat) { box.innerHTML = ""; return; }
+      box.innerHTML = COLORI[cat.value].map((v, n) => chip("radio", "colore", `colore${n}`, v, "chip chip-alt")).join("");
+    }
+
+    // Dopo un click del mouse toglie il focus alla voce, così non resta l'alone
+    document.addEventListener("click", e => {
+      const el = e.target;
+      if (el instanceof HTMLInputElement && el.classList.contains("btn-check") && e.detail > 0) {
+        el.blur();
+      }
+    });
+
+    // Click su una voce già selezionata = deseleziona (solo per i radio)
+    document.addEventListener("click", e => {
+      const el = e.target;
+      if (!(el instanceof HTMLInputElement) || el.type !== "radio" || !el.classList.contains("btn-check")) return;
+      if (el.dataset.on === "1") {
+        el.checked = false;
+        el.dataset.on = "0";
+        el.dispatchEvent(new Event("change", { bubbles: true }));
+      } else {
+        document.querySelectorAll(`input[name="${el.name}"]`).forEach(r => r.dataset.on = "0");
+        el.dataset.on = "1";
+      }
+    });
+
+    document.addEventListener("change", e => {
+      if (e.target.name === "colcat") mostraTinte();
+    });
+
+    // ---------- Generazione del file ----------
+    function valori(name) {
+      return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(x => x.value);
+    }
+
+    function generaTesto(now) {
+      const L = [];
+      L.push("SCHEDA ANALITICO DESCRITTIVA DEL VINO AIS");
+      L.push(`Data e ora: ${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`);
+      L.push(`Vino: ${document.getElementById("nomeVino").value.trim()}`);
+      L.push(`Annata: ${document.getElementById("annata").value.trim()}`);
+      const grad = document.getElementById("gradazione").value.trim().replace(/\s*%?\s*(vol\.?)?\s*$/i, "");
+      L.push(`Gradazione alcolica: ${grad ? grad + " % vol" : ""}`);
+      L.push(`Luogo: ${document.getElementById("luogo").value.trim()}`);
+
+      SEZIONI.forEach((sez, i) => {
+        L.push("", `# ${sez.titolo}`);
+        sez.campi.forEach((c, j) => {
+          let label = c.g ? `${c.g.replace(/\s*\(.*\)/, "")} - ${c.k}` : c.k;
+          let val = "";
+          if (c.t === "colore") {
+            const cat = valori("colcat")[0], col = valori("colore")[0];
+            val = cat ? (col ? `${cat} - ${col}` : cat) : "";
+          } else if (c.t === "note") {
+            const n = document.getElementById("note").value.trim();
+            if (n) { L.push("Note:", n, ""); }
+            return;
+          } else {
+            val = valori(`f${i}_${j}`).join(", ");
+          }
+          if (val) L.push(`${label}: ${val}`);
+        });
+      });
+      return L.join("\r\n") + "\r\n";
+    }
+
+    function scarica() {
+      const now = new Date();
+      const testo = generaTesto(now);
+      const nome = document.getElementById("nomeVino").value.trim()
+        .replace(/[^\p{L}\p{N}]+/gu, "_").replace(/^_+|_+$/g, "");
+      const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+      const filename = `scheda_vino${nome ? "_" + nome : ""}_${stamp}.txt`;
+
+      const blob = new Blob([testo], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function azzera() {
+      if (!confirm("Vuoi azzerare tutta la scheda?")) return;
+      document.getElementById("nomeVino").value = "";
+      document.getElementById("luogo").value = "";
+      document.getElementById("annata").value = "";
+      document.getElementById("gradazione").value = "";
+      build();
+    }
+
+    // ---------- Avvio ----------
+    (function () {
+      const d = new Date();
+      document.getElementById("dataOggi").textContent = `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
+      build();
+      document.getElementById("btnDownload").addEventListener("click", scarica);
+      document.getElementById("btnReset").addEventListener("click", azzera);
+    })();
+  </script>
+</body>
+
+</html>

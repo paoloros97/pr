@@ -25,6 +25,21 @@
     .scheda-field .field-hint { font-weight: 400; font-style: italic; color: #6c757d; font-size: .85rem; }
     .scheda-chips { display: flex; flex-wrap: wrap; gap: .5rem; }
     .scheda-chips .btn { font-size: .9rem; }
+     /* stile proprio dei pulsanti: nessun effetto hover "appiccicoso" su smartphone */
+    .scheda-chips .chip { color: #6c757d; background: transparent; border: 1px solid #6c757d; }
+    .scheda-chips .chip-alt { color: #3d6f8e; border-color: #3d6f8e; }
+    .scheda-chips .btn-check:not(:checked) + .chip:hover { background: transparent; color: #6c757d; border-color: #6c757d; }
+    .scheda-chips .btn-check:not(:checked) + .chip-alt:hover { color: #3d6f8e; border-color: #3d6f8e; }
+    .scheda-chips .btn-check:checked + .chip,
+    .scheda-chips .btn-check:checked + .chip:hover { background: #6c757d; color: #fff; border-color: #6c757d; }
+    .scheda-chips .btn-check:checked + .chip-alt,
+    .scheda-chips .btn-check:checked + .chip-alt:hover { background: #3d6f8e; color: #fff; border-color: #3d6f8e; }
+    @media (hover: hover) {
+      .scheda-chips .btn-check:not(:checked) + .chip:hover { background: rgba(108, 117, 125, .12); }
+      .scheda-chips .btn-check:not(:checked) + .chip-alt:hover { background: rgba(61, 111, 142, .12); }
+    }
+    /* niente alone dopo il click del mouse; resta solo per la navigazione da tastiera */
+    .scheda-chips .btn-check:focus:not(:focus-visible) + .btn { box-shadow: none !important; }
     .scheda-section { margin-top: 2.5rem; }
     .scheda-section .section-heading { background: #e4e6e8; padding: .6rem 1rem; border-radius: .4rem; margin: 0 0 1.5rem; }
     /* evidenziazioni tenui */
@@ -231,7 +246,7 @@
 
     function chip(type, name, id, value, cls) {
       return `<input type="${type}" class="btn-check" name="${name}" id="${id}" value="${esc(value)}" autocomplete="off">` +
-             `<label class="btn ${cls || "btn-outline-secondary"}" for="${id}">${esc(value)}</label>`;
+             `<label class="btn ${cls || "chip"}" for="${id}">${esc(value)}</label>`;
     }
 
     function labelHtml(c) {
@@ -281,8 +296,16 @@
       const cat = document.querySelector('input[name="colcat"]:checked');
       const box = document.getElementById("tinteColore");
       if (!cat) { box.innerHTML = ""; return; }
-      box.innerHTML = COLORI[cat.value].map((v, n) => chip("radio", "colore", `colore${n}`, v, "btn-outline-primary")).join("");
+      box.innerHTML = COLORI[cat.value].map((v, n) => chip("radio", "colore", `colore${n}`, v, "chip chip-alt")).join("");
     }
+
+    // Dopo un click del mouse toglie il focus alla voce, così non resta l'alone
+    document.addEventListener("click", e => {
+      const el = e.target;
+      if (el instanceof HTMLInputElement && el.classList.contains("btn-check") && e.detail > 0) {
+        el.blur();
+      }
+    });
 
     // Click su una voce già selezionata = deseleziona (solo per i radio)
     document.addEventListener("click", e => {
