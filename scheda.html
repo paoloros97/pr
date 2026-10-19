@@ -46,7 +46,7 @@
     .tint { padding: 1rem 1.1rem; border-radius: .5rem; border-left: 5px solid transparent; }
     .tint-viola { background: #ebe4f3; border-left-color: #c6b5dc; }
     .tint-oliva { background: #ebecd8; border-left-color: #c3c69f; }
-    .tint-magenta { background: #f3dcea; border-left-color: #dcadcb; }
+    .tint-magenta { background: #ffa2c1; border-left-color: #fa8eb2; }
     .tint-rosa { background: #fbe6ea; border-left-color: #ecb7c3; }
     .scheda-group { margin-bottom: 1.5rem; }
     .scheda-group .scheda-field.indent { margin-left: 1.5rem; }
@@ -98,6 +98,8 @@
 
           <form id="scheda" onsubmit="return false;" autocomplete="off">
 
+            <div id="sezioni"></div>
+
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="nomeVino" class="form-label fw-bold">Nome del vino</label>
@@ -120,13 +122,14 @@
               </div>
             </div>
 
-            <div id="sezioni"></div>
+            
 
             <div class="d-flex flex-wrap gap-2 mt-5 mb-4">
               <button type="button" class="btn btn-primary" id="btnDownload">
                 <i class="fas fa-download"></i> Scarica scheda (.txt)
               </button>
               <button type="button" class="btn btn-outline-secondary" id="btnReset">Azzera scheda</button>
+              <div type="button" class="btn btn-outline-secondary"><a href="scheda.html" target="_blank">Apri nuova scheda</a> </div>
             </div>
           </form>
 
@@ -193,11 +196,11 @@
 
     const SEZIONI = [
       {
-        titolo: "Esame visivo",
+        titolo: "Esame visivo 👀",
         campi: [
-          { k: "Limpidezza", o: ["Velato", "Abbastanza Limpido", "Limpido", "Cristallino", "Brillante"] },
-          { k: "Colore", t: "colore" },
-          { k: "Consistenza", hint: "solo per vini fermi", bg: "viola", o: ["Scorrevole", "Consistente", "Viscoso"] },
+          { k: "Limpidezza 💎", o: ["Velato", "Abbastanza Limpido", "Limpido", "Cristallino", "Brillante"] },
+          { k: "Colore 🎨", t: "colore" },
+          { k: "Consistenza 🌊", hint: "solo per vini fermi", bg: "viola", o: ["Scorrevole", "Consistente", "Viscoso"] },
           { g: EFF_VISIVA, k: "Numero catenelle", o: ["Scarse", "Mediamente numerose", "Numerose"] },
           { g: EFF_VISIVA, k: "Velocità ascesa", o: ["Rapida", "Media", "Lenta"] },
           { g: EFF_VISIVA, k: "Grana bollicine", o: ["Grossolane", "Mediamente fini", "Fini"] },
@@ -205,7 +208,7 @@
         ]
       },
       {
-        titolo: "Esame olfattivo",
+        titolo: "Esame olfattivo 👃",
         campi: [
           { k: "Intensità", o: ["Moderatamente intenso", "Intenso", "Molto intenso"] },
           { k: "Descrittori", hint: "è possibile selezionare più opzioni", t: "multi",
@@ -216,28 +219,28 @@
         ]
       },
       {
-        titolo: "Esame gusto-olfattivo",
+        titolo: "Esame gusto-olfattivo 🥂👃",
         campi: [
-          { k: "Dolcezza", o: ["Secco", "Poco dolce", "Moderatamente dolce", "Dolce", "Molto dolce"] },
+          { k: "Dolcezza 🍬", o: ["Secco", "Poco dolce", "Moderatamente dolce", "Dolce", "Molto dolce"] },
           { k: "Acidità", o: ["Fresco", "Poco fresco", "Moderatamente fresco", "Vibrante", "Acidulo"] },
-          { k: "Alcolicità", o: ["Caldo", "Poco caldo", "Moderatamente caldo", "Molto caldo", "Alcolico"] },
-          { k: "Tannicità", o: ["Poco tannico", "Moderatamente tannico", "Tannico", "Tenace", "Astringente"] },
-          { k: "Rotondità", o: ["Poco morbido", "Moderatamente morbido", "Morbido", "Vellutato", "Pastoso"] },
-          { k: "Sapidità", o: ["Poco sapido", "Moderatamente sapido", "Sapido", "Saporito", "Salato"] },
-          { k: "Effervescenza", hint: "solo spumanti e frizzanti", bg: "oliva", o: ["Delicata", "Moderata", "Vivace", "Esuberante", "Incisiva"] },
-          { k: "Intensità", o: ["Moderatamente intenso", "Intenso", "Molto intenso"] },
-          { k: "Struttura", o: ["Di medio corpo", "Di corpo pieno", "Robusto"] },
-          { k: "Equilibrio", o: ["Poco equilibrato", "Mediamente equilibrato", "Equilibrato"] },
-          { k: "Persistenza", o: ["Moderatamente persistente", "Persistente", "Molto persistente"] },
-          { k: "Qualità gusto-olfattiva", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
+          { k: "Alcolicità 🔥", o: ["Caldo", "Poco caldo", "Moderatamente caldo", "Molto caldo", "Alcolico"] },
+          { k: "Tannicità 🍋", o: ["Poco tannico", "Moderatamente tannico", "Tannico", "Tenace", "Astringente"] },
+          { k: "Rotondità 🔘", o: ["Poco morbido", "Moderatamente morbido", "Morbido", "Vellutato", "Pastoso"] },
+          { k: "Sapidità 🧂", o: ["Poco sapido", "Moderatamente sapido", "Sapido", "Saporito", "Salato"] },
+          { k: "Effervescenza 🫧", hint: "solo spumanti e frizzanti", bg: "oliva", o: ["Delicata", "Moderata", "Vivace", "Esuberante", "Incisiva"] },
+          { k: "Intensità 🧲", o: ["Moderatamente intenso", "Intenso", "Molto intenso"] },
+          { k: "Struttura ⛓️", o: ["Di medio corpo", "Di corpo pieno", "Robusto"] },
+          { k: "Equilibrio ⚖️", bg: "rosa", o: ["Poco equilibrato", "Mediamente equilibrato", "Equilibrato"] },
+          { k: "Persistenza ⌛", o: ["Moderatamente persistente", "Persistente", "Molto persistente"] },
+          { k: "Qualità gusto-olfattiva ", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
         ]
       },
       {
         titolo: "Considerazioni finali",
         campi: [
-          { k: "Stato evolutivo", o: ["Pronto", "Maturo"] },
-          { k: "Armonia", bg: "rosa", o: ["Poco armonico", "Mediamente armonico", "Armonico"] },
-          { k: "Qualità complessiva", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
+          { k: "Stato evolutivo 🕣", o: ["Pronto", "Maturo"] },
+          { k: "Armonia 🎻", bg: "rosa", o: ["Poco armonico", "Mediamente armonico", "Armonico"] },
+          { k: "Qualità complessiva 🟰", bg: "magenta", o: ["Accettabile", "Buono", "Distinto", "Ottimo", "Eccellente"] }
         ]
       }
     ];
